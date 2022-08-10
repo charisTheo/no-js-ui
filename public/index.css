@@ -1,0 +1,152 @@
+@layer base, headings, card;
+
+@layer base {
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    
+    body, html {
+        width: 100%;
+        height: 100%;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 400;
+        text-align: center;
+        font-size: 100%;
+    }
+    
+    body, html, img {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@layer headings {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Comfortaa', cursive;
+        text-decoration: underline;
+        text-underline-offset: 10px;
+        text-decoration-color: #090979
+    }
+}
+
+header, main, footer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+header {
+    height: 68px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0px 0px 5px 1px rgb(0 0 0 / 40%);
+}
+
+.logo {
+    border-radius: 50%;
+    padding: 5px;
+    border: 1px solid #ca559d;
+    height: 58px;
+    width: 58px;
+    font-size: 2em;
+    background-image: linear-gradient(45deg, #56336b 0%, #090979 35%, #ca559d 100%);
+}
+
+.page-description {
+    font-weight: 700;
+    margin: 2rem auto;
+    font-size: 1.25rem;
+    max-width: 900px;
+}
+
+main {
+    padding: 20px;
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    container: myContainer / inline-size;
+}
+
+.card {
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 40%);
+    border-radius: 4px;
+    transform: scale(1);
+    transition: all 0.35s;
+    display: flex;
+    flex-direction: column;
+}
+.card:hover {
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 60%);
+    transform: scale(1.05);
+}
+
+.card-image {
+    margin-left: -10px;
+    margin-right: -10px;
+    aspect-ratio: 1.2 / 1;
+    object-fit: cover;
+    object-position: top;
+    max-height: 300px;
+}
+
+.card-description {
+    text-align: start;
+}
+
+@container myContainer (max-width: 300px) {
+    /* Cannot apply styles to parents or the container */
+    .card {
+        padding-bottom: 0
+    }
+    .card .card-description {
+        display: none;
+    }
+    .card-image {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+}
+
+@container myContainer (min-width: 650px) {
+    .card {
+        --spacing: 20px;
+        --image-width: 200px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: var(--spacing);
+    }
+    .card-title {
+        width: 100%;
+    }
+    .card-image {
+        margin-left: 0px;
+        width: var(--image-width);
+        height: var(--image-width);
+        border-bottom-left-radius: 4px
+    }
+    .card-description {
+        width: calc(100% -  var(--image-width) -  var(--spacing));
+        margin-top: 0
+    }
+}
+
+@layer card {
+    .card-title {
+        font-size: 1.55rem;
+        font-family: 'Permanent Marker', cursive;
+        margin: 0.8rem auto;
+        text-decoration-color: #ca559d;
+        font-weight: 400
+    }
+}

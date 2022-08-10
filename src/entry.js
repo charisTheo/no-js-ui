@@ -1,1 +1,1 @@
-console.log("entry app!!");
+console.log("Look ma! No JS! 🕺 💃");
