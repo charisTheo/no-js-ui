@@ -48,6 +48,34 @@
     }
 }
 
+@scope (#light:target) {
+    header, main, footer, .card {
+        --background-color: #fff;
+        --text-color: #222;
+    }
+    .light-icon {
+        display: none
+    }
+}
+
+@scope (#dark:target) {
+    main, footer {
+        --background-color: #222;
+        --text-color: #fff
+    }
+    header {
+        --background-color: #333;
+        --text-color: #fff;
+    }
+    .dark-icon {
+        display: none
+    }
+}
+
+.dark-icon, .light-icon {
+    fill: var(--text-color)
+}
+
 header, main, footer {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -62,26 +90,17 @@ header {
     align-items: center;
     padding: 5px 2rem;
     box-shadow: 0px 0px 5px 1px rgb(0 0 0 / 40%);
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 
-@scope (header) {
-    @media screen and (prefers-color-scheme: dark) {
-        header {
-            --background-color: #333;
-            --text-color: #fff;
-        }
+@media screen and (prefers-color-scheme: dark) {
+    header {
+        --background-color: #333;
+        --text-color: #fff;
     }
-}
-
-.logo {
-    border-radius: 50%;
-    padding: 5px;
-    border: 1px solid #ca559d;
-    height: 58px;
-    width: 58px;
-    font-size: 2em;
-    background-image: linear-gradient(45deg, #56336b 0%, #090979 35%, #ca559d 100%);
 }
 
 @scope (.page-subtitle) {
