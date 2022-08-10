@@ -48,6 +48,7 @@
     }
 }
 
+/* @scope rule: https://drafts.csswg.org/css-cascade-6/#scope-atrule */
 @scope (#light:target) {
     header, main, footer, .card {
         --background-color: #fff;
